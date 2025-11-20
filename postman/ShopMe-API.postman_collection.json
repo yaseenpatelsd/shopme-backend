@@ -1,0 +1,268 @@
+{
+  "info": {
+    "_postman_id": "b95617a6-350a-4364-8f1d-45c2409854da",
+    "name": "ShopMe Backend API",
+    "description": "Postman collection for ShopMe ecommerce backend project.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"Test@123\",\n  \"email\": \"user@example.com\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/register"
+          }
+        },
+        {
+          "name": "Account Verification",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"otp\": \"123456\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/account-verification"
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"Test@123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/login"
+          }
+        },
+        {
+          "name": "OTP Request",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/otp-request"
+          }
+        },
+        {
+          "name": "Password Reset",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"otp\": \"123456\",\n  \"password\": \"NewPass@123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/password-reset"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Personal Details",
+      "auth": { "type": "bearer", "bearer": [{ "value": "<JWT-TOKEN-HERE>" }] },
+      "item": [
+        {
+          "name": "Add Personal Details",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"John Doe\",\n  \"gender\": \"Male\",\n  \"mobileNo\": \"9123456780\",\n  \"dateOfBirth\": \"2000-01-01\",\n  \"address\": \"Some Street 123\",\n  \"city\": \"City\",\n  \"state\": \"State\",\n  \"country\": \"Country\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/personal/add"
+          }
+        },
+        {
+          "name": "Edit Personal Details",
+          "request": {
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"John D.\",\n  \"gender\": \"Male\",\n  \"mobileNo\": \"9123456780\",\n  \"dateOfBirth\": \"2000-01-01\",\n  \"address\": \"Updated Street 456\",\n  \"city\": \"City\",\n  \"state\": \"State\",\n  \"country\": \"Country\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/personal/edit"
+          }
+        },
+        {
+          "name": "Get Personal Details",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/personal/get"
+          }
+        },
+        {
+          "name": "Delete Personal Details",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/personal/delete"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Admin Product Management",
+      "auth": { "type": "bearer", "bearer": [{ "value": "<JWT-TOKEN-HERE>" }] },
+      "item": [
+        {
+          "name": "Add Product",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop\",\n  \"description\": \"Gaming Laptop\",\n  \"price\": 90000,\n  \"imageUrl\": \"image-link\",\n  \"quantity\": 10,\n  \"sellerName\": \"Seller\",\n  \"sellerAddress\": \"Seller Address\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/api/product/admin/add"
+          }
+        },
+        {
+          "name": "Edit Product",
+          "request": {
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Laptop\",\n  \"description\": \"Updated Description\",\n  \"price\": 95000,\n  \"imageUrl\": \"new-image\",\n  \"quantity\": 5,\n  \"sellerName\": \"Seller\",\n  \"sellerAddress\": \"Seller Address\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/api/product/admin/edit/1"
+          }
+        },
+        {
+          "name": "Get All Products (Admin)",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/product/admin/get-products"
+          }
+        },
+        {
+          "name": "Delist Product",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/product/admin/dilist/1"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Product Search",
+      "item": [
+        {
+          "name": "Search by Name",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/product/search?name=Laptop"
+          }
+        },
+        {
+          "name": "Search by Price Range",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/product/search?minPrice=1000&maxPrice=90000"
+          }
+        },
+        {
+          "name": "Search All",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/product/search"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Orders",
+      "auth": { "type": "bearer", "bearer": [{ "value": "<JWT-TOKEN-HERE>" }] },
+      "item": [
+        {
+          "name": "Buy Product",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"quentity\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/api/order/buy"
+          }
+        },
+        {
+          "name": "Cancel Order",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"productId\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/api/order/cancel"
+          }
+        },
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/order/get-all"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Admin Order Management",
+      "auth": { "type": "bearer", "bearer": [{ "value": "<JWT-TOKEN-HERE>" }] },
+      "item": [
+        {
+          "name": "Change Delivery Status",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderID\": 1,\n  \"productId\": 2,\n  \"deliveryStatus\": \"Processing\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/api/order/admin/status/change"
+          }
+        },
+        {
+          "name": "Change Payment Status",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"productId\": 2,\n  \"status\": \"Successful\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{base_url}}/api/order/admin/payment/status/change"
+          }
+        }
+      ]
+    }
+  ]
+}
