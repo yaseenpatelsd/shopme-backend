@@ -3,14 +3,14 @@
 A complete backend system for an online store, featuring admin dashboard APIs, JWT authentication, product management, order tracking, Razorpay ID generation, and fully automated HTML email notifications.
 
 ⚠ Note: Razorpay is used only to generate payment/order IDs.
-No real money transactions are processed.
+No real payment or money transaction happens.
 
 📌 Features
 👤 Authentication & User Management
 
 User registration with email
 
-Login with JWT authentication
+Login using JWT authentication
 
 Email-based account verification
 
@@ -18,21 +18,21 @@ Secure password reset via OTP
 
 Role-based access (USER / ADMIN)
 
-Admin can register separately
+Separate admin registration
 
 🛒 Product Management (Admin Only)
 
-Add new products
+Add products
 
-Edit existing products
+Update product info
 
 Delist/remove products
 
-Search products
+Search products by:
 
-By name
+Name
 
-By price range
+Price range
 
 Fetch all products
 
@@ -40,27 +40,27 @@ Fetch all products
 
 Users can place orders
 
-Users can cancel their orders
+Users can cancel orders
 
-Admin updates:
+Admin can update:
 
 Delivery status (Packed, Shipped, Delivered, Cancelled, etc.)
 
 Payment status
 
-View all orders
+Admin can view all orders
 
 💳 Razorpay (Mock Integration)
 
-Razorpay SDK used to generate order IDs
+Razorpay SDK used to generate order IDs only
 
-No real payments
+No payment processing
 
-The Razorpay ID is stored with order details
+Razorpay ID stored with order details
 
 📧 Automated Email Notifications
 
-Beautiful HTML email templates sent to the user:
+HTML emails sent for:
 
 🎉 Order confirmation
 
@@ -72,17 +72,19 @@ Beautiful HTML email templates sent to the user:
 
 ❌ Order cancelled
 
-Emails include:
+Each email contains:
 
 Product details
 
 Price
 
-Address
-
 Order number
 
-Status update
+Quantity
+
+Address
+
+Updated status
 
 📇 Personal Details API
 
@@ -92,19 +94,17 @@ Add personal details
 
 Update details
 
-Get details
+Fetch their details
 
 Delete details
 
-Admin has a similar personal details API for admin profile.
+Admin also has a personal details API.
 
-📑 API Documentation
+📑 Documentation (Swagger)
 
-Swagger is included and auto-generated.
+Swagger UI automatically generated:
 
-URL:
-
-http://localhost:8080/swagger-ui/index.html
+👉 http://localhost:8080/swagger-ui/index.html
 
 🛠 Tech Stack
 Backend
@@ -115,7 +115,7 @@ Spring Boot
 
 Spring MVC
 
-Spring Security (JWT)
+Spring Security + JWT
 
 Spring Data JPA
 
@@ -127,15 +127,15 @@ Email
 
 Spring Mail
 
-HTML templates (Thymeleaf-like custom templates)
+HTML custom templates
 
-Other Tools
+Tools
 
-Postman (API testing)
+Postman
 
-Swagger / OpenAPI
+Swagger UI
 
-Razorpay SDK (for generating IDs only)
+Razorpay Java SDK
 
 🚀 How to Run the Project
 1️⃣ Clone the repository
@@ -143,9 +143,6 @@ git clone https://github.com/<your-username>/shopme-backend.git
 cd shopme-backend
 
 2️⃣ Configure application.properties
-
-Set your own values:
-
 spring.datasource.url=jdbc:mysql://localhost:3306/shopme
 spring.datasource.username=YOUR_DB_USER
 spring.datasource.password=YOUR_DB_PASS
@@ -163,53 +160,49 @@ mvn clean install -DskipTests
 mvn spring-boot:run
 
 
-OR from IDE → Run Application.java
+OR run Application.java from your IDE.
 
 📁 Project Structure
 shopme-backend
-│── src/main/java/shop/me/back/end/
-│   ├── Controller
-│   ├── Service
-│   ├── Repository
-│   ├── Entity
-│   ├── Dto
-│   ├── Mapping
-│   ├── Config
-│   └── Jwt
-│── src/main/resources/
-│── postman/ShopMe-API.postman_collection.json
-│── screenshots/
-│── pom.xml
-└── README.md
-
+  │── src/main/java/shop/me/back/end/
+  │   ├── Controller
+  │   ├── Service
+  │   ├── Repository
+  │   ├── Entity
+  │   ├── Dto
+  │   ├── Mapping
+  │   ├── Config
+  │   └── Jwt
+  │
+  │── src/main/resources/
+  │
+  │── postman/ShopMe-backend-api-test.postman_collection.json
+  │── screenshots/
+  │── pom.xml
+  └── README.md
 
 🧪 Postman Collection
 
-A full collection for testing all APIs is included in the repo:
+A complete Postman collection is included:
 
 ShopMe-backend-api-test.postman_collection.json
 
-🖼 Screenshots (Optional but Recommended)
 
-Create a folder named:
-
-/screenshots
-
-
-Add:
 
 Swagger UI
 
 Email templates
 
-Postman testing
+API testing screenshots
 
-Database tables
+Database table views
 
-Recruiters love visual proof.
+Order flow screenshots
+
+These help recruiters understand the project visually.
 
 ❤️ Author
 
 Yaseen Patel
 
-If you like the project, ⭐ star the repository!
+If you like this project, please ⭐ star the repository!
